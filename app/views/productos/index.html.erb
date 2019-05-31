@@ -1,0 +1,30 @@
+<h1>Productos</h1>
+<h3>Registar Nuevos Productos</h3>
+<!-- # <a href="/productos/new">Agregar nuevos productos</a> -->
+<%= link_to 'Agregar nuevos productos', new_producto_path %>
+<h3>Productos Registrados</h3>
+<table>
+    <tr>
+        <thead>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </thead>
+    </tr>
+    <% @producto.each do |productos| %>
+        <tr>
+            <td><%= productos.nombre %></td>
+            <td><%= productos.descripcion %></td>
+            <td><%= productos.cantidad %></td>
+            <td><%= productos.precio %></td>
+            <td>
+                <%= link_to 'Ver', producto_path(productos) %>
+                <%= link_to 'Modificar', edit_producto_path(productos) %>
+                <%= link_to 'Eliminar', producto_path(productos),
+                method: :delete,
+                data: { confirm: 'Esta segura en eliminar este producto?' } %>
+            </td>
+        </tr>
+    <% end %>
+</table>

@@ -1,0 +1,36 @@
+<div style="position:relative; left:35%; margin-top:10%; width:100%;">
+    <h1 style="color: crimson;">Crear nuevo registro<h1>
+    <%= form_with model: @registro, local: true do |form| %>
+        <% if @registro.errors.any? %>
+            <div id="error_explanation">
+                <h2>
+                    <%= pluralize(@registro.errors.count, "error") %> prohibited this registro from being saved:
+                </h2>
+                <ul>
+                    <% @registro.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div style="width:100%">
+            <%= form.label :Cantidad %>
+            <%= form.number_field :gasto %>
+        </div>
+        <div style="width:100%">
+            <%= form.label :Descripcion %>
+            <%= form.text_field :descripcion %>
+        </div>
+        <div style="width:100%">
+            <%= form.label :Egreso %>
+            <%= form.radio_button :destino, 0 %>
+            <%= form.label :Ingreso %>
+            <%= form.radio_button :destino, 1 %>
+        </div>
+        <div style="width:100%">
+            <%= form.submit %>
+        </div>
+    <% end %>
+    <a href="/registros" style="font-size: medium;text-decoration: none;color: crimson;">Regresar</a>
+    <!--<%= link_to 'Regresar', registros_path %>-->
+</div>
