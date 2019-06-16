@@ -4,25 +4,26 @@
         <%= link_to 'Nuevo registro', new_registro_path, :class => 'btn btn-success' %>
     </div>
     <br>
-    <table class="table table-hover">
-        <tr>
-            <thead>
-                <th>Cantidad</th>
-                <th class="text-center">Motivo</th>
-            </thead>
-        </tr>
-        <% @registro.each do |registros| %>
-        <tr>
-            <% if registros.destino == false %>
-                <td class="ingreso-negativo">$ -<%= registros.gasto %></td>
-                <td><%= registros.descripcion %></td>
-                <td><%= link_to 'Detallar', registro_path(registros), :class => 'btn btn-danger' %></td>
-            <% else %>
-                <td class="ingreso-positivo">$ <%= registros.gasto %></td>
-                <td ><%= registros.descripcion %></td>
-                <td ><%= link_to 'Detallar', registro_path(registros), :class => 'btn btn-info' %></td>
-            <% end %>
-        </tr>
-        <% end %>
-    </table>
+        <table class="table table-hover">
+            <tr>
+                <thead>
+                    <th>Cantidad</th>
+                    <th class="text-center">Motivo</th>
+                </thead>
+            </tr>
+            
+                <% @registro.each do |registros| %>
+                <tr>
+                    <% if registros.destino == false %>
+                        <td class="ingreso-negativo">$ -<%= registros.gasto %></td>
+                        <td><%= registros.descripcion %></td>
+                        <td><%= link_to 'Detallar', registro_path(registros), :class => 'btn btn-danger' %></td>
+                    <% else %>
+                        <td class="ingreso-positivo">$ <%= registros.gasto %></td>
+                        <td><%= registros.descripcion %></td>
+                        <td><%= link_to 'Detallar', registro_path(registros), :class => 'btn btn-info' %></td>
+                    <% end %>
+                </tr>
+                <% end %>
+        </table>
 </div>

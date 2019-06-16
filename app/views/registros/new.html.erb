@@ -14,24 +14,21 @@
                 </ul>
             </div>
         <% end %>
+        <%= form.hidden_field :user_id, :value => current_user.id  %>
         <div class="col-md-12">
             <%= form.number_field :gasto, placeholder: "Ingrese la Cantidad" %>
         </div>
         <div class="col-md-12">
             <%= form.text_field :descripcion, placeholder: "Descripción" %>
         </div>
-        <div class="btn-group text-center" data-toggle="buttons">
-            <label class="btn btn-danger active">
-                <%= form.radio_button :destino, 0 %>
-                <span class="glyphicon glyphicon-ok"></span>
-                Egreso
+            <label for="egreso" class="btn btn-danger">
+            <%= form.radio_button :destino, false, :id => 'egreso' %>
+            Egreso
             </label>
-            <label class="btn btn-info">
-                <%= form.radio_button :destino, 1 %>
-                <span class="glyphicon glyphicon-ok"></span>
-                Ingreso
+            <label for="ingreso" class="btn btn-info">
+            <%= form.radio_button :destino, true, :id => 'ingreso' %>
+            Ingreso
             </label>
-        </div>
         <div class="col-md-12">
             <%= form.submit 'Crear Registro', :class => 'btn btn-primary boton-login' %>
         </div>

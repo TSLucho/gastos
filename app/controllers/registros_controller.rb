@@ -1,6 +1,6 @@
 class RegistrosController < ApplicationController
     def index
-        @registro = Registro.all
+        @registro = Registro.all       
     end
     def show
         @registro = Registro.find(params[:id])
@@ -15,9 +15,9 @@ class RegistrosController < ApplicationController
             else
                 render :new
             end
-    end 
+    end
     private
         def parametros_registro
-            params.require(:registro).permit(:gasto, :descripcion, :destino)
+            params.require(:registro).permit(:gasto, :descripcion, :destino, :user_id)
         end
 end

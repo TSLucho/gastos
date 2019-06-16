@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_043334) do
     t.float "gasto"
     t.string "descripcion"
     t.boolean "destino"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
