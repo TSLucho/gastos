@@ -1,6 +1,6 @@
 class RegistrosController < ApplicationController
     def index
-        @registro = Registro.all       
+        @registro = Registro.all.order('created_at DESC')     
     end
     def show
         @registro = Registro.find(params[:id])
