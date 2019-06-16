@@ -1,22 +1,28 @@
-<div style="position:relative; left:25%; margin-top:10%; padding:10px; width:45%;">
-    <h1 style="color: crimson;">Detalles del Resgitro</h1>
-    <table style="position:relative; left:5%; width:90%">
-        <tr>
-            <thead>
-                <th style="text-align:left">Detalles</th>
-                <th style="text-align:center">Gasto</th>
-                <th style="text-align:center">Fecha</th>
-                <th style="text-align:right">Tipo</th>
-            </thead>
-        </tr>
-        <tr>
-            <td style="text-align:left"><%= @registro.descripcion %></td>
-            <td style="text-align:center">$ <%= @registro.gasto %></td>
-            <td style="text-align:center"><%= @registro.created_at %></td>
-            <td style="text-align:right"><% if @registro.destino == false %> Egreso <% else %> Ingreso <% end %></td>
-        </tr>
-    </table>
-    <br>
-    <a href="/registros" style="font-size: medium;text-decoration: none;color: crimson;">Regresar</a>
+<a href="/registros" class="pull-right btn btn-info">Regresar</a>
+<div class="text-center col-md-12">
+    <h1>Detalles del Registro</h1>
     <!--<%= link_to 'Regresar', registros_path %>-->
+    <br>
+    <div class="panel panel-primary">
+        <table class="table table-hover">
+            <tr>
+                <thead>
+                    <th>Detalles</th>
+                    <th>Gasto</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                </thead>
+            </tr>
+            <tr>
+                <td><%= @registro.descripcion %></td>
+                <% if @registro.destino == false %>
+                    <td class="ingreso-negativo">$ -<%= @registro.gasto %></td>
+                <% else %>
+                    <td class="ingreso-positivo">$ <%= @registro.gasto %></td>
+                <% end %>
+                <td><%= @registro.created_at %></td>
+                <td><% if @registro.destino == false %> Egreso <% else %> Ingreso <% end %></td>
+            </tr>
+        </table>
+    </div>
 </div>

@@ -1,3 +1,23 @@
 // Place all the styles related to the Registros controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.regis-negativo{
+    background: #ac2925;
+    color: black;
+}
+.ingreso-negativo{
+    color: red;
+    font-family: cursive;
+    font-weight: bold;
+}
+.ingreso-positivo{
+    color: rgb(111, 231, 175);
+    font-family: cursive;
+    font-weight: bold;
+}
+.btn span.glyphicon {    			
+	opacity: 0;				
+}
+.btn.active span.glyphicon {				
+	opacity: 1;				
+}

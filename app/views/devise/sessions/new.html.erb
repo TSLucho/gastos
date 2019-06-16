@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h2>Iniciar Sesión</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Correo" %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "current-password" , placeholder: "Contraseña" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Iniciar Sesión", :class => 'btn btn-primary boton-login' %>
+    </div>
+  <% end %>
+</div>

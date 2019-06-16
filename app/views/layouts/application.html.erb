@@ -10,6 +10,56 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default navbar-fixed" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <%= link_to "LuchoProject", root_path, class: 'navbar-brand' %>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <% if current_user %>
+                    <li><%= link_to 'Registros', registros_path %></li>
+                    <li><%= link_to 'Perfil', edit_user_registration_path %></li>
+                    <li><%= link_to 'Salir', destroy_user_session_path, method: :delete %></li>
+                  <% else %>
+                    <li><%= link_to 'Registrate', new_registration_path(resource_name) %></li>
+                    <li><%= link_to 'Iniciar Sesión', new_user_session_path %></li>
+                  <% end %>
+              </ul>
+          </div>
+      </div>
+  </nav>
+    <!--<div class="alert alert-success" role="alert"><%= notice %></div>-->
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <a href="#" data-dismiss="alert" ></a>
+        <ul style="list-style-type: none">
+          <li>
+            <% if key == "alert"%>
+            <div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong> Ops!! Algo malo a pasado! Por favor verifique sus datos y vuelva a intentarlo</strong>
+            </div>
+            <% else %>
+            <div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong> Bienvenido! Has iniciado sesión con Exito!</strong>
+            </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    <div class="col-md-2"></div>
+    <div class="col-md-8 col-sm-10 col-xs-12">
+      <%= yield %>
+    </div>
+    <div class="col-md-2"></div>
   </body>
 </html>

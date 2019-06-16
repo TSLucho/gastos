@@ -1,32 +1,28 @@
-<div style="position:relative; left:25%; margin-top:8%; padding:10px; width:45%;">
-    <h1 style="position:relative; left:20%; color:chocolate;">Registros Actuales de Gatos<h1>
-    <div style="width:30%;">
-        <a href="registros/new" style="font-size: medium;text-decoration: none;color: crimson;">Ingresar nuevo registro</a>
-        <!--<%= link_to 'Ingresar nuevo registro', new_registro_path %>-->
+<div class="col-md-12">
+    <br>
+    <div>
+        <%= link_to 'Nuevo registro', new_registro_path, :class => 'btn btn-success' %>
     </div>
-    <!--<%= link_to 'Ir a Productos', productos_path %>-->
-    <h2>Registro del estado de Ingresos y Egresos</h2>
-        <table style="position:relative; left:5%; width:90%">
-            <tr>
-                <thead>
-                    <th style="text-align:left">Cantidad</th>
-                    <th style="text-align:center">Motivo</th>
-                </thead>
-            </tr>
-            <% @registro.each do |registros| %>
-            <tr>
-                <% if registros.destino == false %>
-                    <td style="color:red">$ -<%= registros.gasto %></td>
-                    <td style="color:red; text-align:center"><%= registros.descripcion %></td>
-                    <td style="color:red"><%= link_to 'Detallar', registro_path(registros) %></td>
-                <% else %>
-                    <td style="color:blue">$ <%= registros.gasto %></td>
-                    <td style="color:blue; text-align:center"><%= registros.descripcion %></td>
-                    <td style="color:blue"><%= link_to 'Detallar', registro_path(registros) %></td>
-                <% end %>
-            </tr>
+    <br>
+    <table class="table table-hover">
+        <tr>
+            <thead>
+                <th>Cantidad</th>
+                <th class="text-center">Motivo</th>
+            </thead>
+        </tr>
+        <% @registro.each do |registros| %>
+        <tr>
+            <% if registros.destino == false %>
+                <td class="ingreso-negativo">$ -<%= registros.gasto %></td>
+                <td><%= registros.descripcion %></td>
+                <td><%= link_to 'Detallar', registro_path(registros), :class => 'btn btn-danger' %></td>
+            <% else %>
+                <td class="ingreso-positivo">$ <%= registros.gasto %></td>
+                <td ><%= registros.descripcion %></td>
+                <td ><%= link_to 'Detallar', registro_path(registros), :class => 'btn btn-info' %></td>
             <% end %>
-        </table>
+        </tr>
+        <% end %>
+    </table>
 </div>
-<div style="position:relative; left:25%; padding:10px; color:red; float:left; padding:10px">Gastos Realizados</div>
-<div style="position:relative; left:25%; padding:10px; color:blue; float:left; padding:10px">Ingresos Obtenidos</div>

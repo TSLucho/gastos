@@ -1,10 +1,11 @@
-<div style="position:relative; left:35%; margin-top:10%; width:100%;">
-    <h1 style="color: crimson;">Crear nuevo registro<h1>
+<%= link_to 'Regresar', registros_path, :class => 'btn btn-info pull-right' %>
+<div class="text-center col-md-12">
+    <h1>Nuevo Registro<h1>
     <%= form_with model: @registro, local: true do |form| %>
         <% if @registro.errors.any? %>
             <div id="error_explanation">
                 <h2>
-                    <%= pluralize(@registro.errors.count, "error") %> prohibited this registro from being saved:
+                    <%= pluralize(@registro.errors.count, "error") %> No se pudo lograr salvar este registro:
                 </h2>
                 <ul>
                     <% @registro.errors.full_messages.each do |msg| %>
@@ -13,24 +14,26 @@
                 </ul>
             </div>
         <% end %>
-        <div style="width:100%">
-            <%= form.label :Cantidad %>
-            <%= form.number_field :gasto %>
+        <div class="col-md-12">
+            <%= form.number_field :gasto, placeholder: "Ingrese la Cantidad" %>
         </div>
-        <div style="width:100%">
-            <%= form.label :Descripcion %>
-            <%= form.text_field :descripcion %>
+        <div class="col-md-12">
+            <%= form.text_field :descripcion, placeholder: "Descripción" %>
         </div>
-        <div style="width:100%">
-            <%= form.label :Egreso %>
-            <%= form.radio_button :destino, 0 %>
-            <%= form.label :Ingreso %>
-            <%= form.radio_button :destino, 1 %>
+        <div class="btn-group text-center" data-toggle="buttons">
+            <label class="btn btn-danger active">
+                <%= form.radio_button :destino, 0 %>
+                <span class="glyphicon glyphicon-ok"></span>
+                Egreso
+            </label>
+            <label class="btn btn-info">
+                <%= form.radio_button :destino, 1 %>
+                <span class="glyphicon glyphicon-ok"></span>
+                Ingreso
+            </label>
         </div>
-        <div style="width:100%">
-            <%= form.submit %>
+        <div class="col-md-12">
+            <%= form.submit 'Crear Registro', :class => 'btn btn-primary boton-login' %>
         </div>
     <% end %>
-    <a href="/registros" style="font-size: medium;text-decoration: none;color: crimson;">Regresar</a>
-    <!--<%= link_to 'Regresar', registros_path %>-->
 </div>
